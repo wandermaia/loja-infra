@@ -7,4 +7,4 @@ namespace: loja-api-staging
 images:
 - name: ghcr.io/wandermaia/loja-api
   newName: ghcr.io/wandermaia/loja-api
-  newTag: 365e25d5aaa63636d45ce323cc8230d7808d2295
+  newTag: 63a361e
