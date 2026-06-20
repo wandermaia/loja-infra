@@ -3,9 +3,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loja-api
+  labels:
+    app: loja-api
 spec:
   selector:
     app: loja-api
   ports:
-    - port: 8000
+    - name: http-metrics
+      port: 8000
       targetPort: 8000
+      protocol: TCP
