@@ -7,9 +7,6 @@ spec:
   selector:
     matchLabels:
       app: loja-api
-  # namespaceSelector:
-  #   matchNames:
-  #     - loja-api-staging
   endpoints:
     - port: http-metrics
       path: /metrics
