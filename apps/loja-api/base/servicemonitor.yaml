@@ -1,0 +1,13 @@
+# apps/loja-api/base/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: loja-api
+spec:
+  selector:
+    matchLabels:
+      app: loja-api
+  endpoints:
+    - port: http-metrics
+      path: /metrics
+      interval: 15s

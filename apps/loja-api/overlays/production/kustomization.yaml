@@ -1,0 +1,6 @@
+# apps/loja-api/overlays/production/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+namespace: loja-api-production
