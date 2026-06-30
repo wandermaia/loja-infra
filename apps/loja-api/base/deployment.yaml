@@ -1,0 +1,37 @@
+# apps/loja-api/base/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loja-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loja-api
+  template:
+    metadata:
+      labels:
+        app: loja-api
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: loja-api
+          image: ghcr.io/wandermaia/loja-api:latest
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
