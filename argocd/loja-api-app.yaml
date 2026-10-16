@@ -1,0 +1,21 @@
+# argocd/loja-api-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loja-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/wandermaia/loja-infra
+    targetRevision: main
+    path: apps/loja-api/overlays/staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: loja-api-staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
